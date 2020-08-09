@@ -6,7 +6,8 @@ import {GET_WEATHER, SET_ERROR, SET_LOADING, WeatherAction, WeatherData, Weather
 export const getWeather = (city: string): ThunkAction<void, RootState, null, WeatherAction> => {
     return async dispatch => {
         try {
-            const response = await fetch(`api.openweathermap.org/data/2.5/weather?id=${city}&appid=${process.env.REACT_APP_API_KEY}`);
+            const response = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.REACT_APP_API_KEY}&units=metric&lang=fr`);
+
             if (!response.ok) {
                 const resData: WeatherError = await response.json();
                 throw new Error(resData.message);
