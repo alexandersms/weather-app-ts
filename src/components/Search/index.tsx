@@ -1,18 +1,28 @@
 import React, {FormEvent, FunctionComponent, useState} from "react";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {RootState} from "../../store";
 
 //--Set Alert action
 import {setAlert} from "../../actions/alertActions";
+import {setError} from "../../actions/weatherActions";
+
 //-- getWeather et setLoading
 import {getWeather, setLoading} from "../../actions/weatherActions";
+
+//--importation du composant Alert
+import Alert from "../../components/Alert/Alert";
 
 
 interface SearchProps {
     title: string
 }
 
-const SearchBar: FunctionComponent<SearchProps> = ({ title }) => {
-    const dispatch = useDispatch()
+const Index: FunctionComponent<SearchProps> = ({ title }) => {
+    const dispatch = useDispatch();
+
+    const error = useSelector((state:RootState) => state.weather.error);
+    const alertMsg = useSelector((state:RootState) => state.alert.message);
+
     const [city, setCity] = useState('');
 
     const handleChange = (e: FormEvent<HTMLInputElement>) => {
@@ -24,11 +34,12 @@ const SearchBar: FunctionComponent<SearchProps> = ({ title }) => {
 
         if(city.trim() === '') {
             return dispatch(setAlert('La ville est obligatoire!!'))
+        } else {
+            dispatch(setLoading());
+            dispatch(getWeather(city));
+            setCity('');
         }
 
-        dispatch(setLoading());
-        dispatch(getWeather(city));
-        setCity('');
     }
 
     return (
@@ -43,8 +54,18 @@ const SearchBar: FunctionComponent<SearchProps> = ({ title }) => {
                 />
                 <button className="w-full bg-gray-700 mt-2 text-white rounded-lg p-2">Rechercher</button>
             </form>
+
+            {
+                alertMsg && <Alert message={alertMsg} onClose={() => dispatch(setAlert(''))}/>
+            }
+
+            {
+                error && <Alert message={error} onClose={() => dispatch(setError())}/>
+            }
+
+
         </div>
     )
 }
 
-export default SearchBar
+export default Index

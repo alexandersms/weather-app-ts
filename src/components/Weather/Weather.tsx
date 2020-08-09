@@ -7,7 +7,7 @@ interface WeatherProps {
 
 const Weather: FunctionComponent<WeatherProps> = ({ data }) => {
     return (
-        <div className="weather-container font-sans w-128 max-w-lg rounded-lg overflow-hidden bg-gray-800 shadow-lg mt-4">
+        <div className="weather-container font-sans bg-gray-800 mt-4 rounded-lg shadow-lg overflow-hidden w-128">
 
             {/* Current weather */}
             <div className="current-weather flex items-center justify-between px-6 py-8">
@@ -22,7 +22,7 @@ const Weather: FunctionComponent<WeatherProps> = ({ data }) => {
                    </div>
                </div>
                 <div>
-                    <img src={`http://api.openweathermap.org/img/wm/${data.weather[0].icon}.png`} alt="icon-weather"/>
+                    <img src={`https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`} alt="icon-weather"/>
                 </div>
             </div>
 
