@@ -1,24 +1,21 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { FunctionComponent } from 'react';
+import SearchBar from './components/Search/SearchBar'
+import Weather from "./components/Weather/Weather";
 
-function App() {
+const App: FunctionComponent = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App flex justify-center pt-16">
+
+        <div className="text-white mb-8">
+
+            {/* Weather Component*/}
+            <SearchBar title="Weather App"/>
+
+            {/* Weather Component*/}
+            <Weather/>
+
+        </div>
+
     </div>
   );
 }
