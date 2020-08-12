@@ -14,7 +14,7 @@ const Weather: FunctionComponent<WeatherProps> = ({ data }) => {
                <div className="flex items-center">
                    <div>
                        <div className="text-6xl font-semibold">{data.main.temp.toFixed(0)}&deg;C</div>
-                       <div>{data.main.temp_max.toFixed(0)}&deg; /{data.main.temp_min.toFixed(0)}&deg; Ressenti {data.main.feels_like.toFixed(0)}&deg;C</div>
+                       <div>{data.main.temp_max.toFixed(0)}&deg;/{data.main.temp_min.toFixed(0)}&deg; Ressenti {data.main.feels_like.toFixed(0)}&deg;C</div>
                    </div>
                    <div className="mx-8">
                        <div className="font-semibold">{data.weather[0].description}</div>

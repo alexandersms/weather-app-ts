@@ -2,7 +2,7 @@ import React, {FormEvent, FunctionComponent, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../../store";
 
-//--Set Alert action
+//--SetAlert, setError  action
 import {setAlert} from "../../actions/alertActions";
 import {setError} from "../../actions/weatherActions";
 
