@@ -19,7 +19,8 @@ const App: FunctionComponent = () => {
 
         <div className="text-white mb-8 w-128">
 
-            {/* Weather Component*/}
+            <h1 className="text-4xl text-blue-400 text-center font-semibold mb-2">Weather App ❄️</h1>
+            {/* Search Component*/}
             <SearchBar title="Entrer le nom d'une ville et cliqué sur le bouton Recherche"/>
 
             {/* Loading || Weather Component */}

@@ -48,7 +48,7 @@ const SearchBar: FunctionComponent<SearchProps> = ({ title }) => {
             <form onSubmit={handleSubmit}>
                 <input
                     type="text"
-                    className="w-full rounded-lg p-2"
+                    className="input-search w-full rounded-lg p-2"
                     placeholder={ title }
                     value={city}
                     onChange={handleChange}
