@@ -1,5 +1,4 @@
 import {ThunkAction} from 'redux-thunk';
-//import axios from 'axios'
 import {RootState} from "../store";
 import {GET_WEATHER, SET_ERROR, SET_LOADING, WeatherAction, WeatherData, WeatherError} from "./index";
 

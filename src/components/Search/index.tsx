@@ -4,10 +4,10 @@ import {RootState} from "../../store";
 
 //--SetAlert, setError  action
 import {setAlert} from "../../actions/alertActions";
-import {setError} from "../../actions/weatherActions";
 
 //-- getWeather et setLoading
-import {getWeather, setLoading} from "../../actions/weatherActions";
+import {getWeather, setLoading, setError} from "../../actions/weatherActions";
+import {getForecast} from "../../actions/forecastActions"
 
 //--importation du composant Alert
 import Alert from "../../components/Alert/Alert";
@@ -17,7 +17,7 @@ interface SearchProps {
     title: string
 }
 
-const Index: FunctionComponent<SearchProps> = ({ title }) => {
+const SearchBar: FunctionComponent<SearchProps> = ({ title }) => {
     const dispatch = useDispatch();
 
     const error = useSelector((state:RootState) => state.weather.error);
@@ -37,6 +37,7 @@ const Index: FunctionComponent<SearchProps> = ({ title }) => {
         } else {
             dispatch(setLoading());
             dispatch(getWeather(city));
+            dispatch(getForecast(city));
             setCity('');
         }
 
@@ -68,4 +69,4 @@ const Index: FunctionComponent<SearchProps> = ({ title }) => {
     )
 }
 
-export default Index
+export default SearchBar
